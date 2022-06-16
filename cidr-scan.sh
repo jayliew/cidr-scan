@@ -3,7 +3,7 @@
 # Please send feedback and bugs to Jay
 
 # user must supply args
-if [ $# -lt 1 ] ; then echo 'Usage: ./scan.sh 1.2.3.4/26 "<port string *MUST* be in quotes>"' ; exit 1 ; fi
+if [ $# -lt 1 ] ; then echo 'Usage: ./cidr-scan.sh 1.2.3.4/26 "<port string *MUST* be in quotes>"' ; exit 1 ; fi
 IP_CIDR=$1
 PORTS=$2
 
