@@ -5,6 +5,7 @@ Only supports /25 through /30.
 
 ```
 wget liew.co/cidr-scan
+chmod u+x cidr-scan
 ```
 
 Usage: 
