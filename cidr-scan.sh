@@ -179,10 +179,10 @@ OCTET_4_STOP=${OCTET_4_RANGE[1]}
 
 echo "Scanning ${NET_ADDR}.${OCTET_4_START}-${OCTET_4_STOP} on ports ${PORTS}:"
 
-# for ((I=$OCTET_4_START; $I<=$OCTET_4_STOP; I++))
-# do
-#     # timeout 0.2 nc -nvzw1 $NET_ADDR.$I $PORTS 2>&1 | grep -E '[Oo]pen|[Rr]efuse$'
-#     # timeout 0.3 nc -nvzw1 $NET_ADDR.$I $PORTS 2>&1 | grep -E '[Oo]pen|[Ss]ucce$'
-#     nc -nvzw1 $NET_ADDR.$I $PORTS 2>&1 | grep -E '[Oo]pen|[Ss]ucce$'
-# done
+for ((I=$OCTET_4_START; $I<=$OCTET_4_STOP; I++))
+do
+    # timeout 0.2 nc -nvzw1 $NET_ADDR.$I $PORTS 2>&1 | grep -E '[Oo]pen|[Rr]efuse$'
+    # timeout 0.3 nc -nvzw1 $NET_ADDR.$I $PORTS 2>&1 | grep -E '[Oo]pen|[Ss]ucce$'
+    nc -nvzw1 $NET_ADDR.$I $PORTS 2>&1 | grep -E '[Oo]pen|[Ss]ucce$'
+done
 
