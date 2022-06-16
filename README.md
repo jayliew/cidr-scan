@@ -1,6 +1,10 @@
 # cidr-scan
 bash script to scan your subnets.
 
+```
+wget liew.co/cidr-scan
+```
+
 Usage: 
 
 ```
