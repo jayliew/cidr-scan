@@ -1,5 +1,5 @@
 # cidr-scan
-bash script to scan your subnets
+bash script to scan your subnets.
 
 Usage: 
 
