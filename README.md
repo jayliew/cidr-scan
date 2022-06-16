@@ -12,4 +12,6 @@ Note:
 * 2nd argument is optional, but will default to: `"21-23 80"`
 * 2nd argument **MUST** be wrapped in quotes if it has a space it in
 
+**Perfection is the enemy of progress.**
+
 Please send me any feedback, updates, bugfixes.
