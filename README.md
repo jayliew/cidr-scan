@@ -1,17 +1,23 @@
 # cidr-scan
 Bash script to scan your subnets with CIDR. 
 
-Only supports /24 through /30.
+Supports `/24` through `/30`, and `/32`.
 
 ```
 wget liew.co/cidr-scan
 chmod u+x cidr-scan
 ```
 
-Usage: 
+Most common use (default ports used): 
 
 ```
-./cidr-scan.sh 1.2.3.4/26 "<port string *MUST* be in quotes>"
+./cidr-scan.sh 1.2.3.4/26
+```
+
+Specify ports:
+
+```
+./cidr-scan.sh 1.2.3.4/26 6000-7999"
 ```
 
 Note:
