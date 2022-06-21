@@ -3,7 +3,7 @@
 # Please send feedback and bugs to Jay
 
 # user must supply args
-if [ $# -lt 1 ] ; then echo 'Usage: ./cidr-scan.sh 1.2.3.4/26 "<port string *MUST* be in quotes>"' ; exit 1 ; fi
+if [ $# -lt 1 ] ; then echo 'Usage: ./cidr-scan.sh 1.2.3.4/26 "optional: port range (in quotes)"' ; exit 1 ; fi
 IP_CIDR=$1
 PORTS=$2
 
@@ -15,6 +15,13 @@ IP=$(echo $IP_CIDR | cut -d '/' -f 1)
 CIDR=$(echo $IP_CIDR | cut -d '/' -f 2)
 OCTET_4=$(echo $IP | cut -d '.' -f 4)
 NET_ADDR=$(echo $IP | cut -d '.' -f 1,2,3)
+
+# if [ -z "$PORTS" ] ; then PORTS="21-23 80" ; fi
+
+if [[ $IP_CIDR != *"/"* ]]; then
+    # if no cidr, assume /32
+    CIDR=32
+fi
 
 declare -A CIDR_DIV_DENOM # denominator in division
 CIDR_DIV_DENOM[24]=256
