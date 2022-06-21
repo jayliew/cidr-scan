@@ -17,6 +17,7 @@ OCTET_4=$(echo $IP | cut -d '.' -f 4)
 NET_ADDR=$(echo $IP | cut -d '.' -f 1,2,3)
 
 declare -A CIDR_DIV_DENOM # denominator in division
+CIDR_DIV_DENOM[24]=256
 CIDR_DIV_DENOM[25]=128 # num of IPs per range, including broadcast and network ID
 CIDR_DIV_DENOM[26]=64
 CIDR_DIV_DENOM[27]=32
@@ -30,6 +31,9 @@ ARR_INDEX="${ARR_INDEX_PREFIX}_$ARR_INDEX_SUFFIX"
 # echo $ARR_INDEX
 
 declare -A IP_RANGE
+
+# start and end IP range for /25, excluding broadcast & network ID
+IP_RANGE[24_0]="1 254"
 
 # start and end IP range for /25, excluding broadcast & network ID
 IP_RANGE[25_0]="1 126"
