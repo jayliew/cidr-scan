@@ -25,14 +25,23 @@ CIDR_DIV_DENOM[28]=16
 CIDR_DIV_DENOM[29]=8
 CIDR_DIV_DENOM[30]=4
 
-ARR_INDEX_SUFFIX=$(($OCTET_4/${CIDR_DIV_DENOM[$CIDR]}))
-ARR_INDEX_PREFIX=$CIDR
-ARR_INDEX="${ARR_INDEX_PREFIX}_$ARR_INDEX_SUFFIX"
+ARR_INDEX=-1 # init with invalid value to be changed
+if [ $CIDR -eq 32 ] ; 
+    then
+        ARR_INDEX='ONE_IP_ONLY' # edge case
+    else
+    ARR_INDEX_SUFFIX=$(($OCTET_4/${CIDR_DIV_DENOM[$CIDR]}))
+    ARR_INDEX_PREFIX=$CIDR
+    ARR_INDEX="${ARR_INDEX_PREFIX}_$ARR_INDEX_SUFFIX"
+fi
+
 # echo $ARR_INDEX
 
 declare -A IP_RANGE
 
-# start and end IP range for /25, excluding broadcast & network ID
+IP_RANGE[ONE_IP_ONLY]="${OCTET_4} ${OCTET_4}"
+
+# start and end IP range for /24, excluding broadcast & network ID
 IP_RANGE[24_0]="1 254"
 
 # start and end IP range for /25, excluding broadcast & network ID
@@ -173,6 +182,10 @@ IP_RANGE[30_61]="245 246"
 IP_RANGE[30_62]="249 250"
 IP_RANGE[30_63]="253 254"
 
+# start and end IP range for /32 (itself)
+IP_RANGE[32_1]="${OCTET_4} ${OCTET_4}"
+
+# echo $ARR_INDEX
 # echo ${IP_RANGE[$ARR_INDEX]}
 
 OCTET_4_RANGE=(${IP_RANGE[$ARR_INDEX]})
