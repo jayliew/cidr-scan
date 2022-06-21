@@ -1,7 +1,7 @@
 # cidr-scan
 Bash script to scan your subnets with CIDR. 
 
-Only supports /25 through /30.
+Only supports /24 through /30.
 
 ```
 wget liew.co/cidr-scan
