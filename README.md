@@ -14,10 +14,10 @@ Most common use (default ports used):
 ./cidr-scan.sh 1.2.3.4/26
 ```
 
-Specify ports:
+Specify ports (use _double quotes_):
 
 ```
-./cidr-scan.sh 1.2.3.4/26 6000-7999"
+./cidr-scan.sh 1.2.3.4/26 "6000-7999"
 ```
 
 Note:
