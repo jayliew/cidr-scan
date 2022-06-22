@@ -34,6 +34,6 @@ Note:
 
 _Perfection is the enemy of progress._
 
-This was hastily put together in under an hour.
+Version 0 was hastily put together in under an hour before PT.
 
 Please send me any feedback, updates, bugfixes.
