@@ -24,7 +24,7 @@ fi
 declare -A CIDR_DIV_DENOM # denominator in division
 CIDR_DIV_DENOM[24]=256
 CIDR_DIV_DENOM[25]=128 # num of IPs per range, 
-CIDR_DIV_DENOM[26]=64 # including broadcast and network ID
+CIDR_DIV_DENOM[26]=64  # including broadcast and network ID
 CIDR_DIV_DENOM[27]=32
 CIDR_DIV_DENOM[28]=16
 CIDR_DIV_DENOM[29]=8
@@ -35,7 +35,7 @@ if [ $CIDR -ne 32 ] ; then
     OFFSET_START=$(( $OCTET_4/$IP_ADDRS_PER_SUBNET ))
     OFFSET_STOP=$(( $OCTET_4/$IP_ADDRS_PER_SUBNET+1 ))
     OCTET_4_START=$(( $OFFSET_START*$IP_ADDRS_PER_SUBNET+1 ))
-    OCTET_4_STOP=$(( $OFFSET_STOP*$IP_ADDRS_PER_SUBNET-2 ))
+    OCTET_4_STOP=$(( $OFFSET_STOP*$IP_ADDRS_PER_SUBNET-2 )) 
 else 
     OCTET_4_START=$OCTET_4
     OCTET_4_STOP=$OCTET_4
