@@ -16,8 +16,6 @@ CIDR=$(echo $IP_CIDR | cut -d '/' -f 2)
 OCTET_4=$(echo $IP | cut -d '.' -f 4)
 NET_ADDR=$(echo $IP | cut -d '.' -f 1,2,3)
 
-# if [ -z "$PORTS" ] ; then PORTS="21-23 80" ; fi
-
 if [[ $IP_CIDR != *"/"* ]]; then
     # if no cidr, assume /32
     CIDR=32
