@@ -14,6 +14,12 @@ Most common use (default ports used):
 ./cidr-scan.sh 1.2.3.4/26
 ```
 
+Scan a single host:
+```
+./cidr-scan.sh 1.2.3.4
+./cidr-scan.sh 1.2.3.4/32
+```
+
 Specify ports (use _double quotes_):
 
 ```
