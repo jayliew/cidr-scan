@@ -32,8 +32,4 @@ Note:
 * 2nd argument is optional, but will default to: `"21-23 80"`
 * 2nd argument **MUST** be wrapped in quotes if it has a space it in
 
-_Perfection is the enemy of progress._
-
-Version 0 was hastily put together in under an hour before PT.
-
 Please send me any feedback, updates, bugfixes.
