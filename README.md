@@ -27,7 +27,7 @@ Specify ports (use _double quotes_):
 ```
 
 Note:
-* 1st argument must be IP address with CIDR
+* 1st argument must be IP address. CIDR optional
 * If CIDR is not supplied, `/32` is default (scanning a single host)
 * 2nd argument is optional, but will default to: `"21-23 80"`
 * 2nd argument **MUST** be wrapped in quotes if it has a space it in
