@@ -17,7 +17,7 @@ if [[ $IP_CIDR != *"/"* ]]; then
     CIDR=32 # if no cidr, assume /32
 fi
 
-if [ $CIDR -eq 31 ] || [ $CIDR -lt 24 ] ; then
+if [ $CIDR -eq 31 ] || [ $CIDR -lt 24 ] || [ $CIDR -gt 32 ] ; then
     echo "Invalid / unsupported CIDR" ; exit
 fi
 
