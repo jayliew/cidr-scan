@@ -23,6 +23,11 @@ if [[ $IP_CIDR != *"/"* ]]; then
     CIDR=32
 fi
 
+if [ $CIDR -eq 31 ] || [ $CIDR -lt 24 ] ; then
+    echo "Invalid / unsupported CIDR"
+    exit
+fi
+
 declare -A CIDR_DIV_DENOM # denominator in division
 CIDR_DIV_DENOM[24]=256
 CIDR_DIV_DENOM[25]=128 # num of IPs per range, including broadcast and network ID
