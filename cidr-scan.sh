@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Please send feedback and bugs to Jay
 
 # user must supply args
@@ -7,23 +6,19 @@ if [ $# -lt 1 ] ; then echo 'Usage: ./cidr-scan.sh 1.2.3.4/26 "optional: port ra
 IP_CIDR=$1
 PORTS=$2
 
-# Default port range if not specified
-if [ -z "$PORTS" ] ; then PORTS="21-23 80" ; fi
+if [ -z "$PORTS" ] ; then PORTS="21-23 80" ; fi # Default port range if not specified
 
-# IP_CIDR='1.1.1.180/26'
 IP=$(echo $IP_CIDR | cut -d '/' -f 1)
 CIDR=$(echo $IP_CIDR | cut -d '/' -f 2)
 OCTET_4=$(echo $IP | cut -d '.' -f 4)
 NET_ADDR=$(echo $IP | cut -d '.' -f 1,2,3)
 
 if [[ $IP_CIDR != *"/"* ]]; then
-    # if no cidr, assume /32
-    CIDR=32
+    CIDR=32 # if no cidr, assume /32
 fi
 
 if [ $CIDR -eq 31 ] || [ $CIDR -lt 24 ] ; then
-    echo "Invalid / unsupported CIDR"
-    exit
+    echo "Invalid / unsupported CIDR" ; exit
 fi
 
 declare -A CIDR_DIV_DENOM # denominator in division
@@ -38,18 +33,17 @@ CIDR_DIV_DENOM[30]=4
 ARR_INDEX=-1 # init with invalid value to be changed
 if [ $CIDR -eq 32 ] ; 
     then
-        ARR_INDEX='ONE_IP_ONLY' # edge case
+        ARR_INDEX='ONE_IP_ONLY' # edge case (single host scan)
     else
     ARR_INDEX_SUFFIX=$(($OCTET_4/${CIDR_DIV_DENOM[$CIDR]}))
     ARR_INDEX_PREFIX=$CIDR
     ARR_INDEX="${ARR_INDEX_PREFIX}_$ARR_INDEX_SUFFIX"
 fi
-
 # echo $ARR_INDEX
 
 declare -A IP_RANGE
 
-IP_RANGE[ONE_IP_ONLY]="${OCTET_4} ${OCTET_4}"
+IP_RANGE[ONE_IP_ONLY]="${OCTET_4} ${OCTET_4}" # edge case of 1 host
 
 # start and end IP range for /24, excluding broadcast & network ID
 IP_RANGE[24_0]="1 254"
