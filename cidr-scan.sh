@@ -29,8 +29,13 @@ fi
 
 echo "Scanning ${NET_ADDR}.${OCTET_4_START}-${OCTET_4_STOP} on ports ${PORTS}:"
 
+MOD_VAR=1000
+if [ $CIDR -eq 24 ]; then MOD_VAR=10 ; fi # show progress when scanning /24
+
 for ((I=$OCTET_4_START; $I<=$OCTET_4_STOP; I++))
 do
+    TMP_VAR=$(( $I % $MOD_VAR ))
+    if [ $TMP_VAR -eq 0 ]; then echo "scanning .${I}" ; fi
     # timeout 0.3 nc -nvzw1 $NET_ADDR.$I $PORTS 2>&1 | grep -E '[Oo]pen|[Rr]efuse$'
     # timeout 0.3 nc -nvzw1 $NET_ADDR.$I $PORTS 2>&1 | grep -E '[Oo]pen|[Ss]ucce$'
     nc -nvzw1 $NET_ADDR.$I $PORTS 2>&1 | grep -E '[Oo]pen|[Ss]ucce$'
